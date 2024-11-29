@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Gerenciamento de Veículos</h1>
-    <a href="{% url 'adicionar_veiculo' %}"><button>Adicionar Veículo</button></a>
+    <a href="{% url 'veiculos_add' %}"><button>Adicionar Veículo</button></a>
     <table border="1">
         <thead>
             <tr>
@@ -26,8 +26,8 @@
                     <td>{{ veiculo.modelo }}</td>
                     <td>{{ veiculo.cor }}</td>
                     <td>
-                        <a href="{% url 'atualizar_veiculo' veiculo.id %}"><button>Alterar</button></a>
-                        <a href="{% url 'excluir_veiculo' veiculo.id %}"><button>Excluir</button></a>
+                        <a href="{% url 'veiculos_edit' veiculo.id %}"><button>Alterar</button></a>
+                        <a href="{% url 'veiculos_delete' veiculo.id %}"><button>Excluir</button></a>
                     </td>
                 </tr>
             {% endfor %}

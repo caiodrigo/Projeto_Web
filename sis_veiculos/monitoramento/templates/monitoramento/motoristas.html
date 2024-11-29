@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Motoristas</title>
+</head>
+<body>
+    <h1>Lista de Motoristas</h1>
+    <a href="{% url 'motoristas_add' %}">
+        <button>Novo Motorista</button></a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for motorista in motoristas %}
+            <tr>
+                <td>{{ motorista.nome }}</td>
+                <td>{{ motorista.cpf }}</td>
+                <td>{{ motorista.telefone }}</td>
+                <td>
+                    <a href="{% url 'motoristas_edit' motorista.id %}"><button>Editar</button></a>
+                    <a href="{% url 'motoristas_delete' motorista.id %}"><button>Excluir</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

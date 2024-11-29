@@ -3,8 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('crud/', views.crud_veiculos, name='crud_veiculos'),
-    path('adicionar/', views.adicionar_veiculo, name='adicionar_veiculo'),
-    path('atualizar/<int:veiculo_id>/', views.atualizar_veiculo, name='atualizar_veiculo'),
-    path('excluir/<int:veiculo_id>/', views.excluir_veiculo, name='excluir_veiculo'),
+    path('veiculos/', views.crud_veiculos, name='crud_veiculos'),
+    path('veiculos/add/', views.adicionar_veiculo, name='veiculos_add'),
+    path('veiculos/edit/<int:veiculo_id>/', views.atualizar_veiculo, name='veiculos_edit'),
+    path('veiculos/delete/<int:veiculo_id>/', views.excluir_veiculo, name='veiculos_delete'),
+    path('motoristas/', views.crud_motoristas, name='crud_motoristas'),
+    path('motoristas/add/', views.motoristas_add, name='motoristas_add'),
+    path('motoristas/edit/<int:id>/', views.motoristas_edit, name='motoristas_edit'),
+    path('motoristas/delete/<int:id>/', views.motoristas_delete, name='motoristas_delete'),
 ]
