@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Estacionamento</title>
+    <title>Controle de Estacionamento</title>
 </head>
 <body>
-    <h1>Controle de Estacionamento</h1>
-    <ul>
-        {% for vaga in vagas %}
-        <li>{{ vaga }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Bem-Vindo</h1>
+    <a href="{% url 'crud_veiculos' %}">
+        <button>Gerenciar Veículos</button>
+    </a>
 </body>
 </html>

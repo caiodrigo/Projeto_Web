@@ -4,10 +4,10 @@ class Veiculo(models.Model):
     placa = models.CharField(max_length=7, unique=True)
     marca = models.CharField(max_length=50)
     modelo = models.CharField(max_length=50)
-    cor = models.CharField(max_length=30)
+    cor = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.placa
+        return f"{self.marca} {self.modelo} -  {self.placa}"
 
 class Motorista(models.Model):
     nome = models.CharField(max_length=100)

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Veículo</title>
+</head>
+<body>
+    <h1>Atualizar Veículo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Placa:</label><input type="text" name="placa" value="{{ veiculo.placa }}" required><br>
+        <label>Marca:</label><input type="text" name="marca" value="{{ veiculo.marca }}" required><br>
+        <label>Modelo:</label><input type="text" name="modelo" value="{{ veiculo.modelo }}" required><br>
+        <label>Cor:</label><input type="text" name="cor" value="{{ veiculo.cor }}" required><br>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'crud_veiculos' %}"><button>Cancelar</button></a>
+</body>
+</html>
