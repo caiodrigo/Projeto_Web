@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Veículo</title>
+</head>
+<body>
+    <h1>Desocupar vaga vaga: {{vaga.numero}}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p><b>Carro: </b> {{vaga.veiculo.modelo}} -- {{vaga.veiculo.placa}}</p>
+        <p><b>Motorista: </b> {{vaga.motorista.nome}} -- {{vaga.motorista.cpf}}</p>
+        <button type="submit">confirmar</button>
+        <a href="{% url 'crud_veiculos' %}"><button>Cancelar</button></a>
+    </form>
+</body>
+</html>
