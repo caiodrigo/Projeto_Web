@@ -105,22 +105,6 @@ def vagas_desocupar(request, numero):
     })
     
 
-def vagas_editar(request, numero):
-    vaga = get_object_or_404(Vaga, numero=numero)
-    error = None
-
-    if request.method == 'POST':
-        data = request.POST
-
-        
-        vaga.veiculo = veiculo
-        vaga.motorista = motorista
-        vaga.save()
-        return redirect(crud_vagas)
-    return render(request, 'monitoramento/vagas_ocupar.html', {
-        'vaga': vaga,
-       'error':error
-    })
 
 # Editar motorista
 def motoristas_edit(request, id):
