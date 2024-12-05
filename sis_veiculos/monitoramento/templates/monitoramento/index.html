@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Controle de Estacionamento</title>
-</head>
-<body>
-    <h1>Bem-Vindo</h1>
-    <a href="{% url 'crud_veiculos' %}">
-        <button>Gerenciar Veículos</button>
-    </a>
-    <a href="{% url 'crud_motoristas' %}">
-        <button>Gerenciar Motoristas</button>
-    </a>
-    <a href="{% url 'crud_vagas' %}">
-        <button>Gerenciar Vagas</button>
-    </a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Controle de Estacionamento{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Bem-Vindo ao Sistema de Controle de Estacionamento</h1>
+        <div class="mt-4">
+            <p>Olá! Para gerenciar os carros, motoristas e vagas, basta acessar o menu acima. Lá você poderá visualizar, adicionar ou editar informações conforme necessário.</p>
+            <p>🚗🚙🛻</p>
+        </div>
+    </div>
+{% endblock %}
+

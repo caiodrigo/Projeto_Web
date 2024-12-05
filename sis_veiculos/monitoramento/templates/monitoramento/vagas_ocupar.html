@@ -1,28 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Veículo</title>
-</head>
-<body>
-    <h1>Ocupar vaga: {{vaga.numero}}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {%if error%}
-            <p>Error {{error}}</p>
-        {%endif%}
-        <label>veiculo:</label><select name="veiculo" id="veiculo--">
-            <option value="">--selecione um veiculo--</option>
-            {%for veiculo in veiculos %}
-                <option value="{{veiculo.id}}">{{veiculo.modelo}} -- {{veiculo.placa}}</option>
-            {%endfor%}
-          </select>
-          <br>
-          <br>
-        <label>Cpf do motorista :</label><input type="text" name="cpf" required><br> <br>
-        <button type="submit">Salvar</button>
-        <a href="{% url 'crud_veiculos' %}"><button>Cancelar</button></a>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Ocupar Vaga{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Ocupar Vaga: {{ vaga.numero }}</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            {% if error %}
+                <div class="alert alert-danger">
+                    Error: {{ error }}
+                </div>
+            {% endif %}
+            
+            <div class="mb-3">
+                <label for="veiculo--" class="form-label">Veículo:</label>
+                <select name="veiculo" id="veiculo--" class="form-select" required>
+                    <option value="">Selecione um veículo</option>
+                    {% for veiculo in veiculos %}
+                        <option value="{{ veiculo.id }}">{{ veiculo.modelo }} - {{ veiculo.placa }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF do Motorista:</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" required maxlength="11" pattern="\d{11}" title="Digite um CPF válido com 11 dígitos">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="{% url 'crud_veiculos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

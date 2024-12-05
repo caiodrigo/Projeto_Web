@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Motorista</title>
-</head>
-<body>
-    <h1>Editar Motorista</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar Alterações</button>
-    </form>
-    <a href="{% url 'crud_motoristas' %}">
-        <button>Voltar à lista</button>
-    </a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Editar Motorista{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Editar Motorista</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </form>
+        
+        <a href="{% url 'crud_motoristas' %}" class="btn btn-secondary mt-3">Voltar à lista</a>
+    </div>
+{% endblock %}

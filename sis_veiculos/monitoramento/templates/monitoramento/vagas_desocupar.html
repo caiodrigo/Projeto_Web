@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Veículo</title>
-</head>
-<body>
-    <h1>Desocupar vaga vaga: {{vaga.numero}}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <p><b>Carro: </b> {{vaga.veiculo.modelo}} -- {{vaga.veiculo.placa}}</p>
-        <p><b>Motorista: </b> {{vaga.motorista.nome}} -- {{vaga.motorista.cpf}}</p>
-        <button type="submit">confirmar</button>
-        <a href="{% url 'crud_veiculos' %}"><button>Cancelar</button></a>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Desocupar Vaga{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Desocupar Vaga: {{ vaga.numero }}</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <p><b>Carro: </b> {{ vaga.veiculo.modelo }} - {{ vaga.veiculo.placa }}</p>
+            </div>
+            <div class="mb-3">
+                <p><b>Motorista: </b> {{ vaga.motorista.nome }} - {{ vaga.motorista.cpf }}</p>
+            </div>
+            
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+            <a href="{% url 'crud_veiculos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

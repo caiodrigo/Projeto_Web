@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar Veículo</title>
-</head>
-<body>
-    <h1>Atualizar Veículo</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label>Placa:</label><input type="text" name="placa" value="{{ veiculo.placa }}" required><br>
-        <label>Marca:</label><input type="text" name="marca" value="{{ veiculo.marca }}" required><br>
-        <label>Modelo:</label><input type="text" name="modelo" value="{{ veiculo.modelo }}" required><br>
-        <label>Cor:</label><input type="text" name="cor" value="{{ veiculo.cor }}" required><br>
-        <button type="submit">Salvar</button>
-    </form>
-    <a href="{% url 'crud_veiculos' %}"><button>Cancelar</button></a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Atualizar Veículo{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Atualizar Veículo</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="placa" class="form-label">Placa:</label>
+                <input type="text" class="form-control" name="placa" id="placa" value="{{ veiculo.placa }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="marca" class="form-label">Marca:</label>
+                <input type="text" class="form-control" name="marca" id="marca" value="{{ veiculo.marca }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="modelo" class="form-label">Modelo:</label>
+                <input type="text" class="form-control" name="modelo" id="modelo" value="{{ veiculo.modelo }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="cor" class="form-label">Cor:</label>
+                <input type="text" class="form-control" name="cor" id="cor" value="{{ veiculo.cor }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+        <a href="{% url 'crud_veiculos' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </div>
+{% endblock %}

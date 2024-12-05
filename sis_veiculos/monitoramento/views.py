@@ -81,7 +81,7 @@ def vagas_ocopar(request, numero):
             veiculo = get_object_or_404(Veiculo, id=data.get('veiculo'))
 
             motorista = get_object_or_404(Motorista, cpf=data.get('cpf'))
-            print(motorista)
+
             vaga.ocupar(veiculo=veiculo, motorista=motorista)
 
             return redirect(crud_vagas)

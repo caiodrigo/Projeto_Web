@@ -1,51 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de vagas</title>
-</head>
-<body>
-    <h1>Lista de Motoristas</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                {% if vagas %}
-                    <th>número</th>
-                    <th>Placa do carro</th>
-                    <th>motorista</th>
-                    <th>Ações</th>
-                {%else%}
-                    <th>Vagas</th>
-                {%endif%}
-            </tr>
-        </thead>
-        <tbody>
-           {%if vagas%}
-                {% for vaga in vagas %}
+{% extends 'base.html' %}
+
+{% block title %}Lista de Vagas{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Lista de Vagas</h1>
+        
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>{{ vaga.numero }}</td>
-                    {%if vaga.veiculo%}
-                    <td>{{ vaga.veiculo.placa }}</td>
-                    {%else%}
-                    <td>Vaga disponível</td>
-                    {%endif%}
-                    <td>{{ vaga.motorista }}</td>
-                    <td>
-                        {%if vaga.veiculo and vaga.motorista%}
-                            <a href="{% url 'vagas_desocupar'  vaga.numero%}"><button>Desocupar</button></a>
-                        {%else%}
-                            <a href="{% url 'vagas_ocupar' vaga.numero%}"><button>ocupar</button></a>
-                        {%endif%}
-                    </td>
+                    {% if vagas %}
+                        <th>Número</th>
+                        <th>Placa do Carro</th>
+                        <th>Motorista</th>
+                        <th>Ações</th>
+                    {% else %}
+                        <th>Vagas</th>
+                    {% endif %}
                 </tr>
-                {% endfor %}
+            </thead>
+            <tbody>
+                {% if vagas %}
+                    {% for vaga in vagas %}
+                        <tr>
+                            <td>{{ vaga.numero }}</td>
+                            {% if vaga.veiculo %}
+                                <td>{{ vaga.veiculo.placa }}</td>
+                            {% else %}
+                                <td>Vaga disponível</td>
+                            {% endif %}
+                            <td>{{ vaga.motorista }}</td>
+                            <td>
+                                {% if vaga.veiculo and vaga.motorista %}
+                                    <a href="{% url 'vagas_desocupar' vaga.numero %}" class="btn btn-warning">Desocupar</a>
+                                {% else %}
+                                    <a href="{% url 'vagas_ocupar' vaga.numero %}" class="btn btn-success">Ocupar</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">Nenhuma vaga cadastrada</td>
+                    </tr>
+                {% endif %}
             </tbody>
-            {%else%}
-            <tr>
-                <td>Nenhuma vaga cadastrada</td>
-            </tr>
-            {%endif%}
-    </table>
-</body>
-</html>
+        </table>
+    </div>
+{% endblock %}
